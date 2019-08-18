@@ -15,21 +15,21 @@ session_start();
 
 $config = parse_ini_file( 'inc/config.ini' );
 
-if ( empty( $_GET ) ) {
+if ( empty( $_GET ) ) {												// Checks if field are null
 	header( 'Location: https://aperabags.com/' );
 	die();
-} elseif ( empty( $_GET['nonce'] ) ) {
+} elseif ( empty( $_GET['nonce'] ) ) {				// Check is nonce is left empty
 	header( 'Location: https://aperabags.com/' );
 	die();
-} elseif ( $_GET['nonce'] != 4646 ) {
+} elseif ( $_GET['nonce'] != 4646 ) {					// Checks for valid nonce
 	exit( 'Invalid request' );
 } else {
-	$email     = $_GET['email'];
+	$email     = $_GET['email'];								// Loads the data into local variables
 	$status    = $_GET['status'];
 	$nonce     = $_GET['nonce'];
-	$useragent = $_SERVER['HTTP_USER_AGENT'];
+	$useragent = $_SERVER['HTTP_USER_AGENT'];			
 
-	$token = $config['key'];
+	$token = $config['key'];										// Loads token form config file
 
 }
 
